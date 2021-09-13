@@ -151,6 +151,7 @@ target_include_directories(qualisys PUBLIC
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(qualisys_node src/qualisys_node.cpp)
+#add_executable(mocap_data_pub src/mocap_data_pub.py)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -168,6 +169,10 @@ target_link_libraries(qualisys_node
   ${catkin_LIBRARIES}
 )
 
+#target_link_libraries(mocap_data_pub
+#  ${catkin_LIBRARIES}
+#)
+
 #############
 ## Install ##
 #############
@@ -177,10 +182,12 @@ target_link_libraries(qualisys_node
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-# install(PROGRAMS
-#   scripts/my_python_script
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+install(PROGRAMS
+   src/mocap_data_pub.py
+   scripts/image_combine.py
+   src/mocap_data_multiple.py
+   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html

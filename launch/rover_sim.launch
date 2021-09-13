@@ -5,7 +5,7 @@
     <!-- vehicle model and world -->
     <arg name="est" default="ekf2"/>
     <arg name="vehicle" default="rover"/>
-    <arg name="world" default="worlds/empty.world"/>
+    <arg name="world" default="worlds/abu_dhabi.world"/>
     <!-- gazebo configs -->
     <arg name="gui" default="true"/>
     <arg name="debug" default="false"/>

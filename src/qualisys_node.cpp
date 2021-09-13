@@ -34,10 +34,10 @@ int main(int argc, char **argv)
 
     // Set up a dynamic reconfigure server.
     // This should be done before reading parameter server values.
-    //dynamic_reconfigure::Server<node_example::node_example_paramsConfig> dr_srv;
-    //dynamic_reconfigure::Server<node_example::node_example_paramsConfig>::CallbackType cb;
-    //cb = boost::bind(&NodeExample::configCallback, node_example, _1, _2);
-    //dr_srv.setCallback(cb);
+    // dynamic_reconfigure::Server<node_example::node_example_paramsConfig> dr_srv;
+    // dynamic_reconfigure::Server<node_example::node_example_paramsConfig>::CallbackType cb;
+    // cb = boost::bind(&NodeExample::configCallback, node_example, _1, _2);
+    // dr_srv.setCallback(cb);
 
     // declare variables that can be modified by launch file or command line.
     string server;
@@ -48,33 +48,36 @@ int main(int argc, char **argv)
     const int queue_size = 1;
 
     // initialize parameters from launch file or command line.
-    nh.param("server", server, string("127.0.0.1"));
+    nh.param("server", server, string("192.168.254.1"));
     nh.param("rate_limit", rate_limit, 10.0);
+
+    std::cout<<"before try"<<std::endl;
 
     try
     {
         CRTProtocol rtProtocol;
 
         //Example code for how to use discovery calls.
-        //if (rtProtocol.DiscoverRTServer(4534, false))
-        //{
-        //    sleep(1);
-        //    const auto numberOfResponses = rtProtocol.GetNumberOfDiscoverResponses();
-        //    for (auto index = 0; index < numberOfResponses; index++)
-        //    {
-        //        unsigned int addr;
-        //        unsigned short basePort;
-        //        std::string message;
-        //        if (rtProtocol.GetDiscoverResponse(index, addr, basePort, message))
-        //        {
-        //            printf("%2d - %d.%d.%d.%d:%d\t- %s\n", index, 0xff & addr, 0xff & (addr >> 8), 0xff & (addr >> 16), 0xff & (addr >> 24), basePort, message.c_str());
-        //        }
-        //    }
-        //}
-        //else
-        //{
-        //    printf("%s", rtProtocol.GetErrorString());
-        //}
+        if (rtProtocol.DiscoverRTServer(4534, false))
+        {
+           sleep(1);
+           const auto numberOfResponses = rtProtocol.GetNumberOfDiscoverResponses();
+           std::cout<<numberOfResponses<<std::endl;
+           for (auto index = 0; index < numberOfResponses; index++)
+           {
+               unsigned int addr;
+               unsigned short basePort;
+               std::string message;
+               if (rtProtocol.GetDiscoverResponse(index, addr, basePort, message))
+               {
+                   printf("%2d - %d.%d.%d.%d:%d\t- %s\n", index, 0xff & addr, 0xff & (addr >> 8), 0xff & (addr >> 16), 0xff & (addr >> 24), basePort, message.c_str());
+               }
+           }
+        }
+        else
+        {
+           printf("%s", rtProtocol.GetErrorString());
+        }
 
         const unsigned short basePort = 22222;
         const int majorVersion = 1;
@@ -86,6 +89,7 @@ int main(int argc, char **argv)
         unsigned short udpPort = 6734;
 
         // Main loop.
+        std::cout<<"before while"<<std::endl;
         while (nh.ok())
         {
             if (!rtProtocol.Connected())
