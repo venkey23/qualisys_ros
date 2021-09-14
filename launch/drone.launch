@@ -115,7 +115,7 @@
         <param name="server" value="$(arg server)"/>
     </node>
 
-    <node name="mocap_data_multiple" pkg="qualisys" type="mocap_data_multiple.py" respawn="false" />
+    <node name="mocap_data_multiple_class" pkg="qualisys" type="mocap_data_multiple_class.py" respawn="false" />
         <!-- <param name="rate_limit" value="$(arg rate_limit)"/>
     </node> -->
 

@@ -127,7 +127,7 @@
       <kinematic>1</kinematic>
     </link>
 	<plugin name="virtual_cam" filename="libgazebo_model_pose.so">
-		<topic>/qualisys_node/cf2/pose</topic>
+		<topic>/qualisys_node/cf0/pose</topic>
 	</plugin>
   </model>
 </sdf>

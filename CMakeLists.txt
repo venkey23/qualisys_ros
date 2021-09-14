@@ -186,6 +186,7 @@ install(PROGRAMS
    src/mocap_data_pub.py
    scripts/image_combine.py
    src/mocap_data_multiple.py
+   src/mocap_data_multiple_class.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )
 
