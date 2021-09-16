@@ -49,7 +49,7 @@ int main(int argc, char **argv)
 
     // initialize parameters from launch file or command line.
     nh.param("server", server, string("192.168.254.1"));
-    nh.param("rate_limit", rate_limit, 10.0);
+    // nh.param("rate_limit", rate_limit, 10.0);
 
     std::cout<<"before try"<<std::endl;
 

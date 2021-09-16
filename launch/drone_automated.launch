@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- MAVROS posix SITL environment launch script -->
+    <!-- launches Gazebo environment and 2x: MAVROS, PX4 SITL, and spawns vehicle -->
+    <!-- vehicle model and world -->
+    <env name="PX4_HOME_LAT" value="24.495296"/>
+    <env name="PX4_HOME_LON" value="54.3764920"/>
+    <env name="PX4_HOME_ALT" value="0"/>
+
+    <arg name="est" default="ekf2"/>
+    <arg name="vehicle" default="iris"/>
+    <arg name="world" default="worlds/testing.world"/>
+    <!-- gazebo configs -->
+    <arg name="gui" default="true"/>
+    <arg name="debug" default="false"/>
+    <arg name="verbose" default="false"/>
+    <arg name="paused" default="false"/>
+    <arg name="server" default="192.168.254.1"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="world_name" value="$(arg world)"/>
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="verbose" value="$(arg verbose)"/>
+        <arg name="paused" value="$(arg paused)"/>
+    </include>   
+
+    <node pkg="qualisys" type="qualisys_node" name="qualisys_node" output="screen">
+        <param name="server" value="$(arg server)"/>
+    </node>
+
+    <node name="mocap_data_multiple_class" pkg="qualisys" type="mocap_data_multiple_class.py" respawn="false" />
+        <!-- <param name="rate_limit" value="$(arg rate_limit)"/>
+    </node> -->
+
+    <node pkg="tf2_ros" type="static_transform_publisher" name="qualisys_map" args="0 0 0 0 0 0 map qualisys"/>
+    <node name="image_view" pkg="rqt_image_view" type="rqt_image_view" args="/vr_image"/>
+
+    <!-- <node name="rqt_bag" pkg="rqt_bag" type="rqt_bag" args="$(find qualisys)/data/cf1_pose_2020-09-20-09-14-18.bag"/> -->
+
+    <node name="web_video_server" pkg="web_video_server" type="web_video_server" output="screen"/>
+
+    <node name="image_combine" pkg="qualisys" type="image_combine.py" output="screen"/>
+
+</launch>
+<!-- to add more UAVs (up to 10):
+Increase the id
+Change the name space
+Set the FCU to default="udp://:14540+id@localhost:14550+id"
+Set the malink_udp_port to 14560+id) -->
+

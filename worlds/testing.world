@@ -22,26 +22,10 @@
       </include>
       <include>
          <uri>model://abu_dhabi_model_scaled</uri>
-         <pose>-3 -3 3.5 0 0 -0.65</pose>
+         <pose>0.155 -9.214 3.5 0 0 0.92</pose>
       </include>
       <include>
-    <uri>model://virtual_cam</uri>
-  </include>
-
-    <gui fullscreen='0'>
-      <camera name='user_camera'>
-        <pose>-10 10 10 0 0 0</pose>
-        <view_controller>orbit</view_controller>
-        <projection_type>perspective</projection_type>
-        <track_visual>
-          <name>virtual_cam</name>
-          <follow>true</follow>
-          <xyz>-10 10 10 </xyz>
-          <static>true</static>
-          <min_dist>1.0</min_dist>
-          <max_dist>100.0</max_dist>
-        </track_visual>
-      </camera>
-    </gui>
+         <uri>model://virtual_cam</uri>
+      </include>
    </world>
 </sdf>

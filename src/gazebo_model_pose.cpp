@@ -37,7 +37,7 @@ namespace gazebo
     }
 
     void PoseCallback(const geometry_msgs::PoseStamped& msg) {
-      ignition::math::Pose3d pose = {msg.pose.position.x, msg.pose.position.y, msg.pose.position.z,
+      ignition::math::Pose3d pose = {msg.pose.position.x*40, msg.pose.position.y*40, msg.pose.position.z*40,
         msg.pose.orientation.w, msg.pose.orientation.x,
         msg.pose.orientation.y, msg.pose.orientation.z
       };

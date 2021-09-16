@@ -85,7 +85,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>1 1 1</scale>
+            <scale>0.1 0.1 0.1</scale>
             <uri>model://iris_virtual/meshes/iris.stl</uri>
           </mesh>
         </geometry>
@@ -167,7 +167,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>1 1 1</scale>
+            <scale>0.1 0.1 0.1</scale>
             <uri>model://iris_virtual/meshes/iris_prop_ccw.dae</uri>
           </mesh>
         </geometry>
@@ -232,7 +232,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>1 1 1</scale>
+            <scale>0.1 0.1 0.1</scale>
             <uri>model://iris_virtual/meshes/iris_prop_ccw.dae</uri>
           </mesh>
         </geometry>
@@ -297,7 +297,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>1 1 1</scale>
+            <scale>0.1 0.1 0.1</scale>
             <uri>model://iris_virtual/meshes/iris_prop_cw.dae</uri>
           </mesh>
         </geometry>
@@ -362,7 +362,7 @@
         <pose>0 0 0 0 0 0</pose>
         <geometry>
           <mesh>
-            <scale>1 1 1</scale>
+            <scale>0.1 0.1 0.1</scale>
             <uri>model://iris_virtual/meshes/iris_prop_cw.dae</uri>
           </mesh>
         </geometry>
