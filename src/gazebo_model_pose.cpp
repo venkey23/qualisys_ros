@@ -30,7 +30,7 @@ namespace gazebo
       this->model->SetStatic(true);
       if (_sdf->HasElement("topic")) {
         std::string topic = _sdf->GetElement("topic")->Get<std::string>();
-        this->sub = this->n.subscribe(topic, 1000, &ModelPose::PoseCallback, this);
+        this->sub = this->n.subscribe(topic, 100, &ModelPose::PoseCallback, this);
       } else {
         gzerr << "[gazebo_model_pose] Must set pose topic";
       }

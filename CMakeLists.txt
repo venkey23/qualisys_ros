@@ -157,7 +157,7 @@ add_executable(qualisys_node src/qualisys_node.cpp)
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
 ## e.g. "rosrun someones_pkg node" instead of "rosrun someones_pkg someones_pkg_node"
-set_target_properties(qualisys_node PROPERTIES OUTPUT_NAME node PREFIX "")
+#set_target_properties(qualisys_node PROPERTIES OUTPUT_NAME node PREFIX "")
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -185,7 +185,12 @@ target_link_libraries(qualisys_node
 install(PROGRAMS
    src/mocap_data_pub.py
    scripts/image_combine.py
-   src/mocap_data_multiple.py
+   src/drone0.py
+   src/drone1.py
+   src/drone2.py
+   src/drone3.py
+   src/drone4.py
+   src/drone5.py
    src/mocap_data_multiple_class.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
  )

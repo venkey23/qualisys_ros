@@ -5,8 +5,9 @@ from geometry_msgs.msg import Quaternion, Pose, PoseStamped
 from gazebo_msgs.msg import ModelState
 import numpy as np
 
-n_drones = 6
+n_drones = 2
 model_name = 'iris'
+z_threshold = 0.05 # this is the z zero-error to solve the height issue
 
 class Drone:
     def __init__(self,id):
@@ -19,11 +20,17 @@ class Drone:
     def callback(self,data):
         self.state.pose.position.x = data.pose.position.x * 40
         self.state.pose.position.y = data.pose.position.y * 40
-        self.state.pose.position.z = (data.pose.position.z - 0.02) * 40     
+
+        if(data.pose.position.z < z_threshold):
+            self.state.pose.position.z = 0.0
+        else:
+            self.state.pose.position.z = data.pose.position.z * 40
+
+        self.state.pose.orientation = data.pose.orientation     
 
 if __name__ == '__main__':
     rospy.init_node('mocap_data_multiple', anonymous=True)
-    rate = rospy.Rate(10) 
+    rate = rospy.Rate(100)
 
     objs = list()
     for i in range(n_drones):
@@ -33,8 +40,7 @@ if __name__ == '__main__':
     while not rospy.is_shutdown():
         for i in range(n_drones):
             objs[i].pub.publish(objs[i].state)
-        
-        rate.sleep()
+            rate.sleep()
 
 
 

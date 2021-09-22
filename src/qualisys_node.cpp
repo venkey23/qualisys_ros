@@ -49,7 +49,7 @@ int main(int argc, char **argv)
 
     // initialize parameters from launch file or command line.
     nh.param("server", server, string("192.168.254.1"));
-    // nh.param("rate_limit", rate_limit, 10.0);
+    nh.param("rate_limit", rate_limit, 100.0);
 
     std::cout<<"before try"<<std::endl;
 
@@ -217,6 +217,7 @@ int main(int argc, char **argv)
                                     ROS_INFO("rigid body %s pose added", name.c_str());
                                     pub_pose[name] = nh.advertise<geometry_msgs::PoseStamped>(name + "/pose", queue_size);
                                 }
+                                // std::cout<<x<<" "<<y<<" "<<z<<std::endl;
                                 geometry_msgs::PoseStamped msg;
                                 msg.header.frame_id="qualisys";
                                 msg.header.stamp = now;
@@ -236,6 +237,7 @@ int main(int argc, char **argv)
                                     ROS_INFO("rigid body %s odom added", name.c_str());
                                     pub_odom[name] = nh.advertise<nav_msgs::Odometry>(name + "/odom", queue_size);
                                 }
+                                // std::cout<<x<<" "<<y<<" "<<z<<std::endl;
                                 nav_msgs::Odometry msg;
                                 msg.header.frame_id="qualisys";
                                 msg.header.stamp = now;

@@ -14,7 +14,7 @@
     <arg name="gui" default="true"/>
     <arg name="debug" default="false"/>
     <arg name="verbose" default="false"/>
-    <arg name="paused" default="false"/>
+    <arg name="paused" default="true"/>
     <arg name="server" default="192.168.254.1"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="gui" value="$(arg gui)"/>
@@ -23,12 +23,10 @@
         <arg name="verbose" value="$(arg verbose)"/>
         <arg name="paused" value="$(arg paused)"/>
     </include>
-    <!-- UAV0 -->
+    
     <group ns="uav0">
-        <!-- MAVROS and vehicle configs -->
         <arg name="ID" value="0"/>
         <arg name="fcu_url" default="udp://:14540@localhost:14580"/>
-        <!-- PX4 SITL and vehicle spawn -->
         <include file="$(find qualisys)/launch/single_vehicle_spawn.launch">
             <arg name="x" value="0"/>
             <arg name="y" value="0"/>
@@ -44,22 +42,13 @@
             <arg name="video_uri" value="$(eval 5600 + arg('ID'))"/>
             <arg name="mavlink_cam_udp_port" value="$(eval 14530 + arg('ID'))"/>
         </include>
-        <!-- MAVROS -->
-        <!-- <include file="$(find mavros)/launch/px4.launch">
-            <arg name="fcu_url" value="$(arg fcu_url)"/>
-            <arg name="gcs_url" value=""/>
-            <arg name="tgt_system" value="$(eval 1 + arg('ID'))"/>
-            <arg name="tgt_component" value="1"/>
-        </include> -->
     </group>
-    <!-- UAV1 -->
+    
     <group ns="uav1">
-        <!-- MAVROS and vehicle configs -->
         <arg name="ID" value="1"/>
-        <arg name="fcu_url" default="udp://:14541@localhost:14581"/>
-        <!-- PX4 SITL and vehicle spawn -->
+        <arg name="fcu_url" default="udp://:14540@localhost:14581"/>
         <include file="$(find qualisys)/launch/single_vehicle_spawn.launch">
-            <arg name="x" value="1"/>
+            <arg name="x" value="0"/>
             <arg name="y" value="0"/>
             <arg name="z" value="0"/>
             <arg name="R" value="0"/>
@@ -73,23 +62,14 @@
             <arg name="video_uri" value="$(eval 5600 + arg('ID'))"/>
             <arg name="mavlink_cam_udp_port" value="$(eval 14530 + arg('ID'))"/>
         </include>
-        <!-- MAVROS -->
-        <!-- <include file="$(find mavros)/launch/px4.launch">
-            <arg name="fcu_url" value="$(arg fcu_url)"/>
-            <arg name="gcs_url" value=""/>
-            <arg name="tgt_system" value="$(eval 1 + arg('ID'))"/>
-            <arg name="tgt_component" value="1"/>
-        </include> -->
     </group>
-    <!-- UAV2 -->
-    <group ns="uav2">
-        <!-- MAVROS and vehicle configs -->
+
+    <!-- <group ns="uav2">
         <arg name="ID" value="2"/>
-        <arg name="fcu_url" default="udp://:14542@localhost:14582"/>
-        <!-- PX4 SITL and vehicle spawn -->
+        <arg name="fcu_url" default="udp://:14540@localhost:14582"/>
         <include file="$(find qualisys)/launch/single_vehicle_spawn.launch">
             <arg name="x" value="0"/>
-            <arg name="y" value="1"/>
+            <arg name="y" value="0"/>
             <arg name="z" value="0"/>
             <arg name="R" value="0"/>
             <arg name="P" value="0"/>
@@ -102,23 +82,14 @@
             <arg name="video_uri" value="$(eval 5600 + arg('ID'))"/>
             <arg name="mavlink_cam_udp_port" value="$(eval 14530 + arg('ID'))"/>
         </include>
-        <!-- MAVROS -->
-        <!-- <include file="$(find mavros)/launch/px4.launch">
-            <arg name="fcu_url" value="$(arg fcu_url)"/>
-            <arg name="gcs_url" value=""/>
-            <arg name="tgt_system" value="$(eval 1 + arg('ID'))"/>
-            <arg name="tgt_component" value="1"/>
-        </include> -->
     </group>
 
     <group ns="uav3">
-        <!-- MAVROS and vehicle configs -->
         <arg name="ID" value="3"/>
-        <arg name="fcu_url" default="udp://:14542@localhost:14583"/>
-        <!-- PX4 SITL and vehicle spawn -->
+        <arg name="fcu_url" default="udp://:14540@localhost:14583"/>
         <include file="$(find qualisys)/launch/single_vehicle_spawn.launch">
             <arg name="x" value="0"/>
-            <arg name="y" value="1"/>
+            <arg name="y" value="0"/>
             <arg name="z" value="0"/>
             <arg name="R" value="0"/>
             <arg name="P" value="0"/>
@@ -131,23 +102,14 @@
             <arg name="video_uri" value="$(eval 5600 + arg('ID'))"/>
             <arg name="mavlink_cam_udp_port" value="$(eval 14530 + arg('ID'))"/>
         </include>
-        <!-- MAVROS -->
-        <!-- <include file="$(find mavros)/launch/px4.launch">
-            <arg name="fcu_url" value="$(arg fcu_url)"/>
-            <arg name="gcs_url" value=""/>
-            <arg name="tgt_system" value="$(eval 1 + arg('ID'))"/>
-            <arg name="tgt_component" value="1"/>
-        </include> -->
     </group>
 
     <group ns="uav4">
-        <!-- MAVROS and vehicle configs -->
         <arg name="ID" value="4"/>
-        <arg name="fcu_url" default="udp://:14542@localhost:14584"/>
-        <!-- PX4 SITL and vehicle spawn -->
+        <arg name="fcu_url" default="udp://:14540@localhost:14584"/>
         <include file="$(find qualisys)/launch/single_vehicle_spawn.launch">
             <arg name="x" value="0"/>
-            <arg name="y" value="1"/>
+            <arg name="y" value="0"/>
             <arg name="z" value="0"/>
             <arg name="R" value="0"/>
             <arg name="P" value="0"/>
@@ -160,23 +122,14 @@
             <arg name="video_uri" value="$(eval 5600 + arg('ID'))"/>
             <arg name="mavlink_cam_udp_port" value="$(eval 14530 + arg('ID'))"/>
         </include>
-        <!-- MAVROS -->
-        <!-- <include file="$(find mavros)/launch/px4.launch">
-            <arg name="fcu_url" value="$(arg fcu_url)"/>
-            <arg name="gcs_url" value=""/>
-            <arg name="tgt_system" value="$(eval 1 + arg('ID'))"/>
-            <arg name="tgt_component" value="1"/>
-        </include> -->
     </group>
 
     <group ns="uav5">
-        <!-- MAVROS and vehicle configs -->
         <arg name="ID" value="5"/>
-        <arg name="fcu_url" default="udp://:14542@localhost:14585"/>
-        <!-- PX4 SITL and vehicle spawn -->
+        <arg name="fcu_url" default="udp://:14540@localhost:14585"/>
         <include file="$(find qualisys)/launch/single_vehicle_spawn.launch">
             <arg name="x" value="0"/>
-            <arg name="y" value="1"/>
+            <arg name="y" value="0"/>
             <arg name="z" value="0"/>
             <arg name="R" value="0"/>
             <arg name="P" value="0"/>
@@ -189,22 +142,13 @@
             <arg name="video_uri" value="$(eval 5600 + arg('ID'))"/>
             <arg name="mavlink_cam_udp_port" value="$(eval 14530 + arg('ID'))"/>
         </include>
-        <!-- MAVROS -->
-        <!-- <include file="$(find mavros)/launch/px4.launch">
-            <arg name="fcu_url" value="$(arg fcu_url)"/>
-            <arg name="gcs_url" value=""/>
-            <arg name="tgt_system" value="$(eval 1 + arg('ID'))"/>
-            <arg name="tgt_component" value="1"/>
-        </include> -->
-    </group>
+    </group> -->
 
     <node pkg="qualisys" type="qualisys_node" name="qualisys_node" output="screen">
         <param name="server" value="$(arg server)"/>
     </node>
 
     <node name="mocap_data_multiple_class" pkg="qualisys" type="mocap_data_multiple_class.py" respawn="false" />
-        <!-- <param name="rate_limit" value="$(arg rate_limit)"/>
-    </node> -->
 
     <node pkg="tf2_ros" type="static_transform_publisher" name="qualisys_map" args="0 0 0 0 0 0 map qualisys"/>
     <node name="image_view" pkg="rqt_image_view" type="rqt_image_view" args="/vr_image"/>

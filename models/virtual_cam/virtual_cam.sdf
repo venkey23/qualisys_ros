@@ -12,7 +12,7 @@
         </geometry>
       </visual>
       <sensor name="camera" type="camera">
-		<pose>0 0.05 0 0 0 0</pose>
+		<pose>0 0.03 0 0 0 0</pose>
         <camera name="__default__">
           <horizontal_fov>1.047</horizontal_fov>
           <image>
@@ -21,7 +21,7 @@
           </image>
           <clip>
             <near>0.1</near>
-            <far>100</far>
+            <far>1000</far>
           </clip>
           <lens>
             <type>custom</type>
@@ -67,7 +67,7 @@
       </sensor>
 
       <sensor name="camera2" type="camera">
-		<pose>0 -0.05 0 0 0 0</pose>
+		<pose>0 -0.03 0 0 0 0</pose>
         <camera name="__default__">
           <horizontal_fov>1.047</horizontal_fov>
           <image>
@@ -76,7 +76,7 @@
           </image>
           <clip>
             <near>0.1</near>
-            <far>100</far>
+            <far>1000</far>
           </clip>
           <lens>
             <type>custom</type>
@@ -127,7 +127,7 @@
       <kinematic>1</kinematic>
     </link>
 	<plugin name="virtual_cam" filename="libgazebo_model_pose.so">
-		<topic>/qualisys_node/cf0/pose</topic>
+		<topic>/qualisys_node/vr/pose</topic>
 	</plugin>
   </model>
 </sdf>
